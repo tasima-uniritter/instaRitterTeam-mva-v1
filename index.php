@@ -34,7 +34,7 @@ $app->get('/fotos/', function (Request $request, Response $response) {
     			]
     		}';
     $data = json_decode($data);
-	$newResponse = $response->withJson($data,201);
+	$newResponse = $response->withJson($data,200);
 
     return $newResponse;
 });
@@ -49,7 +49,7 @@ $app->get('/fotos/{id}', function (Request $request, Response $response, array $
                 "usuario":"Nome do Usuario"
     		}';
     $data = json_decode($data);
-	$newResponse = $response->withJson($data,201);
+	$newResponse = $response->withJson($data,200);
 
     return $newResponse;
     
@@ -73,7 +73,7 @@ $app->delete('/fotos/{id}', function (Request $request, Response $response, arra
     			"id":'.$args['id'].'
     		}';
     $data = json_decode($data);
-	$newResponse = $response->withJson($data,201);
+	$newResponse = $response->withJson($data,200);
 
     return $newResponse;
     
