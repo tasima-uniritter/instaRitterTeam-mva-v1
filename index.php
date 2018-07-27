@@ -6,27 +6,30 @@ require 'vendor/autoload.php';
 
 $app = new \Slim\App;
 
-$app->get('/photos/', function (Request $request, Response $response) {
+$app->get('/fotos/', function (Request $request, Response $response) {
     $data = '{
-    			"path": "/photos",    			
-    			"photos": 
+    			"path": "/fotos",    			
+    			"fotos": 
     			[
     				{	"id":1, 
-    					"subtitle":"Foto numero 1", 
-    					"content": "https://www.instaritter.com.br/images/1.jpg",
-    					"date":"2018-07-21 11:00:00"
+    					"legenda":"Foto numero 1", 
+    					"conteudo": "https://www.instaritter.com.br/images/1.jpg",
+    					"data":"2018-07-21 11:00:00",
+                        "usuario":"Fulano da Silva"
     				},
     				{
     					"id":2, 
-    					"subtitle":"Foto numero 2",  
-    					"content": "https://www.instaritter.com.br/images/2.jpg",
-    					"date":"2018-07-21 11:00:00"
+    					"legenda":"Foto numero 2",  
+    					"conteudo": "https://www.instaritter.com.br/images/2.jpg",
+    					"data":"2018-07-21 11:00:00",
+                        "usuario":"Beltrano Morais"
     				},
     				{
     					"id":3, 
-    					"subtitle":"Foto numero 3",  
-    					"content": "https://www.instaritter.com.br/images/3.jpg",
-    					"date":"2018-07-21 11:00:00"
+    					"legenda":"Foto numero 3",  
+    					"conteudo": "https://www.instaritter.com.br/images/3.jpg",
+    					"data":"2018-07-21 11:00:00",
+                        "usuario":"Juka Bala"
     				}
     			]
     		}';
@@ -36,13 +39,14 @@ $app->get('/photos/', function (Request $request, Response $response) {
     return $newResponse;
 });
 
-$app->get('/photos/{id}', function (Request $request, Response $response, array $args) {
+$app->get('/fotos/{id}', function (Request $request, Response $response, array $args) {
             
      $data = '{
     			"id":'.$args['id'].', 
-    			"subtitle":"Foto numero '.$args['id'].'", 
-    			"content": "https://www.instaritter.com.br/images/'.$args['id'].'.jpg",
-    			"date":"2018-07-21 11:00:00"
+    			"legenda":"Foto numero '.$args['id'].'", 
+    			"conteudo": "https://www.instaritter.com.br/images/'.$args['id'].'.jpg",
+    			"data":"2018-07-21 11:00:00",
+                "usuario":"Nome do Usuario"
     		}';
     $data = json_decode($data);
 	$newResponse = $response->withJson($data,201);
@@ -51,7 +55,7 @@ $app->get('/photos/{id}', function (Request $request, Response $response, array 
     
 });
 
-$app->put('/photos/', function (Request $request, Response $response) {
+$app->put('/fotos/', function (Request $request, Response $response) {
             
      $data = '{
     			"id":'.mt_rand(5,35).'
@@ -63,7 +67,7 @@ $app->put('/photos/', function (Request $request, Response $response) {
     
 });
 
-$app->delete('/photos/{id}', function (Request $request, Response $response, array $args) {
+$app->delete('/fotos/{id}', function (Request $request, Response $response, array $args) {
             
      $data = '{
     			"id":'.$args['id'].'
